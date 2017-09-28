@@ -14,15 +14,15 @@
  * the License.
  */
 
-if (!('inert' in HTMLElement.prototype)) {
-  Object.defineProperty(HTMLElement.prototype, 'inert', {
+if (!('data-inert' in HTMLElement.prototype)) {
+  Object.defineProperty(HTMLElement.prototype, 'data-inert', {
     enumerable: true,
 
     /**
      * @return {boolean}
      * @this {Element}
      */
-    get: function() { return this.hasAttribute('inert'); },
+    get: function() { return this.hasAttribute('data-inert'); },
 
     /**
      * @param {boolean} inert
@@ -30,9 +30,9 @@ if (!('inert' in HTMLElement.prototype)) {
      */
     set: function(inert) {
       if (inert) {
-        this.setAttribute('inert', '');
+        this.setAttribute('data-inert', '');
       } else {
-        this.removeAttribute('inert');
+        this.removeAttribute('data-inert');
       }
     }
   });
@@ -135,7 +135,7 @@ if (!('inert' in HTMLElement.prototype)) {
      */
     function madeInertBy(e) {
       while (e && e !== document.documentElement) {
-        if (e.hasAttribute('inert')) {
+        if (e.hasAttribute('data-inert')) {
           return e;
         }
         e = e.parentElement;

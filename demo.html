@@ -4,7 +4,7 @@
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,400,400italic" rel="stylesheet" type="text/css" />
   <style type="text/css">
 
-  *[inert]::before {
+  *[data-inert]::before {
     background: rgba(0, 0, 0, 0.15);
   }
 
@@ -27,7 +27,7 @@ window.addEventListener('load', function() {
 </head>
 <body>
 
-<!-- <div inert>
+<!-- <div data-inert>
   <button>First post lol</button>
 </div> -->
 
@@ -37,7 +37,7 @@ Hello! You can press this <button accessKey="T">thing (T)</button> or...
   <button>that</button> or type <input type="text" placeholder="here" />
 </div>
 
-<div inert>
+<div data-inert>
   <input type="text" placeholder="Faux" />
   <button accessKey="b" id="btn-but">But (B)</button> not these <button>buttons</button> or type <input type="text" placeholder="into this" />
 </div>
@@ -59,15 +59,15 @@ Maybe this one <button tabindex="99">hello (99)</button> or <button>goodbye</but
 
 <span tabIndex="0">
   I can be tabbed to
-  <button inert>Inert</button>
+  <button data-inert>Inert</button>
   <button>Test</button>
-  <button inert>Inert</button>
+  <button data-inert>Inert</button>
   <button>Test</button>
 </span>
 
-<div inert>
+<div data-inert>
   <button>What about me?</button>
-  <div inert>
+  <div data-inert>
     <button>Inert within inert</button>
   </div>
   <button>or meee</button>

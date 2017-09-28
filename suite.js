@@ -101,7 +101,7 @@ void function() {
   });
   test('no programatic focus', function() {
     var div = document.createElement('div');
-    div.setAttribute('inert', '');
+    div.setAttribute('data-inert', '');
     holder.appendChild(div);
 
     var input = createInput('test inert');
@@ -119,15 +119,15 @@ void function() {
   test('support inert property', function() {
     var div = document.createElement('div');
 
-    div.inert = true;
-    assert(div.hasAttribute('inert'));
-    div.inert = false;
-    assert(!div.hasAttribute('inert'));
+    div['data-inert'] = true;
+    assert(div.hasAttribute('data-inert'));
+    div['data-inert'] = false;
+    assert(!div.hasAttribute('data-inert'));
 
-    div.setAttribute('inert', '');
-    assert(div.inert);
-    div.removeAttribute('inert');
-    assert(!div.inert);
+    div.setAttribute('data-inert', '');
+    assert(div['data-inert']);
+    div.removeAttribute('data-inert');
+    assert(!div['data-inert']);
   });
   test('click prevented', function() {
     var clickCount = 0;
@@ -142,7 +142,7 @@ void function() {
     button.click();
     assert.equal(clickCount, 1, 'programatic click once');
 
-    div.setAttribute('inert', '');
+    div.setAttribute('data-inert', '');
     button.click();
     assert.equal(clickCount, 1, 'programatic click disabled via inert');
   });
@@ -162,7 +162,7 @@ void function() {
     input.click();
     assert.equal(clickCount, 1, 'programatic click once');
 
-    div.setAttribute('inert', '');
+    div.setAttribute('data-inert', '');
     input.click();
     assert.equal(clickCount, 1, 'programatic click, even while ? focused, disabled via inert');
   });
@@ -171,7 +171,7 @@ void function() {
     var duringInputInert = createInput('during');
     var afterInput = createInput('after');
 
-    duringInputInert.setAttribute('inert', '');
+    duringInputInert.setAttribute('data-inert', '');
 
     beforeInput.focus();
     assert.equal(document.activeElement, beforeInput, 'sanity check before input focused');
@@ -208,7 +208,7 @@ void function() {
       assert.equal(root.activeElement, button, 'button within shadow is focused');
 
       var inertButton = document.createElement('button');
-      inertButton.setAttribute('inert', '');
+      inertButton.setAttribute('data-inert', '');
       root.appendChild(inertButton);
       inertButton.focus();
       assert.notEqual(root.activeElement, inertButton, 'shadow root button inert');
