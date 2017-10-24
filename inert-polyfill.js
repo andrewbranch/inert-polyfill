@@ -106,14 +106,14 @@ if (!('data-inert' in HTMLElement.prototype)) {
       if (dir < 0) {
         if (e.previousElementSibling) {
           e = e.previousElementSibling;
-          while (e.lastElementChild) {
+          while (e.focus && e.lastElementChild) {
             e = e.lastElementChild;
           }
           return e;
         }
         return e.parentElement;
       }
-      if (e != opt_initial && e.firstElementChild) {
+      if (e != opt_initial && e.focus && e.firstElementChild) {
         return e.firstElementChild;
       }
       while (e) {
@@ -247,6 +247,7 @@ if (!('data-inert' in HTMLElement.prototype)) {
         for (;;) {
           candidate = walkElementTree(candidate, lastTabDirection, inertElement);
           if (!candidate) { break; }
+          if (!candidate.focus) { continue; }
           if (!(candidate.tabIndex < 0)) {
             candidate.focus();
             if (getFocused() !== previous) { return; }
